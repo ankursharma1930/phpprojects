@@ -6,6 +6,7 @@
 <!--https://mdbootstrap.com/docs/standard/extended/registration/-->
 <!--https://mdbootstrap.com/docs/standard/getting-started/installation/ -->
 <!--jquery download https://jquery.com/download/ -->
+<!---https://phppot.com/php/user-registration-in-php-with-login-form-with-mysql-and-code-download/#screenshot-of-user-registration-and-login-form -->
 
 <head>
 <link rel="stylesheet" href="./src/css/bootstrap.min.css"  crossorigin="anonymous">
