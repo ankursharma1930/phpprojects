@@ -17,10 +17,6 @@ if(!empty($_POST['but-submit'])){
   require_once __DIR__.'/Model/Member.php';
   $member = new Member();
   $register = $member->saveMember();
-
-  if(!empty($register)){
-    var_dump($register);
-  }
 }
 
 // require_once __DIR__.'/include/Config.php';
@@ -28,6 +24,7 @@ if(!empty($_POST['but-submit'])){
 // var_dump($a->getConnection());
 ?>
 <head>
+  <title>User registration</title>
 <link rel="stylesheet" href="./src/css/bootstrap.min.css"  crossorigin="anonymous">
 <link rel="stylesheet" href="./src/css/all.min.css">
 <link rel="stylesheet" href="./src/css/mdb.min.css">
@@ -35,11 +32,17 @@ if(!empty($_POST['but-submit'])){
 <script src="./src/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">
         <div class="card text-black" style="border-radius: 25px;">
+        <?php if(!empty($register)){ ?>
+        <div class="alert text-center alert-<?= $register['status'] ?>">
+          <strong><?= $register['message'] ?></strong>
+        </div>
+        <?php  } ?>
           <div class="card-body p-md-5">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -91,12 +94,11 @@ if(!empty($_POST['but-submit'])){
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <input type="submit" class="btn btn-primary btn-lg" name="but-submit" value="Register" />
                   </div>
-
                 </form>
-
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                <img class="img-fluid" alt="Sample image" src="https://via.placeholder.com/1621x912.png" />
+                <img src="./src/image/rgis.jpg" class="img-fluid" />
+                <!-- <img class="img-fluid" alt="Sample image" src="https://via.placeholder.com/1621x912.png" /> -->
                 <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                   class="img-fluid" alt="Sample image"> -->
 

@@ -26,7 +26,6 @@ Class Config {
     }
 
     public function getConnection(){
-        try{
             $connection = new \mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASENAME);
             if(mysqli_connect_errno()){
                 trigger_error("There is erro in DB conenction");
@@ -34,10 +33,6 @@ Class Config {
             }
             $connection->set_charset("utf8");
             return $connection;
-
-        } catch(Exception $e) {
-            echo "DB error";
-        }
     }
     
     /**

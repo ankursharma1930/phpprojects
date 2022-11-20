@@ -1,5 +1,49 @@
+PHP & Ampersand: Passing by Reference
+https://www.phpreferencebook.com/samples/php-pass-by-reference/
+
+$a = 1;
+$b = &$a; // $b references the same value as $a, currently 1
+$b = $b + 1; // 1 is added to $b, which effects $a the same way
+echo "b is equal to $b, and a is equal to $a";
+
+output
+b is equal to 2, and a is equal to 2
+
+===========
+
 Mysqli Prepared statement
 https://phpdelusions.net/mysqli_examples/prepared_select
 
 
 Use mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); if nothing is showing in error
+
+
+=============
+call_user_func_array 
+https://www.php.net/manual/en/function.call-user-func-array.php
+
+
+use this example to undarstand the call_user_func_array
+<?php
+function foobar($arg, $arg2) {
+    echo __FUNCTION__, " got $arg and $arg2\n";
+}
+class foo {
+    function bar($arg, $arg2) {
+        echo __METHOD__, " got $arg and $arg2\n";
+    }
+}
+
+
+// Call the foobar() function with 2 arguments
+call_user_func_array("foobar", array("one", "two"));
+
+// Call the $foo->bar() method with 2 arguments
+$foo = new foo;
+call_user_func_array(array($foo, "bar"), array("three", "four"));
+?>
+
+foobar got one and two
+foo::bar got three and four
+
+==============

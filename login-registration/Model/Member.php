@@ -77,12 +77,12 @@ class Member
         $isEmailExists = $this->isEmailExists($_POST["email"]);
         if ($checkUsernameExists) {
             $response = array(
-                "status" => "error",
+                "status" => "danger",
                 "message" => "Username already exists."
             );
         } else if ($isEmailExists) {
             $response = array(
-                "status" => "error",
+                "status" => "danger",
                 "message" => "Email already exists."
             );
         } else {
@@ -102,9 +102,6 @@ class Member
                 $_POST["email"]
             );
             $memberId = $this->ds->insert($query, $paramType, $paramValue);
-            var_dump($memberId);
-            var_dump($_POST);
-            die;
             if (! empty($memberId)) {
                 $response = array(
                     "status" => "success",
