@@ -7,7 +7,26 @@
 <!--https://mdbootstrap.com/docs/standard/getting-started/installation/ -->
 <!--jquery download https://jquery.com/download/ -->
 <!---https://phppot.com/php/user-registration-in-php-with-login-form-with-mysql-and-code-download/#screenshot-of-user-registration-and-login-form -->
+<!--https://www.w3schools.com/php/php_mysql_prepared_statements.asp   Mysql prepared Statement -->
+<?php 
 
+use  Ankur\Member;
+
+if(!empty($_POST['but-submit'])){
+  var_dump($_POST);
+  require_once __DIR__.'/Model/Member.php';
+  $member = new Member();
+  $register = $member->saveMember();
+
+  if(!empty($register)){
+    var_dump($register);
+  }
+}
+
+// require_once __DIR__.'/include/Config.php';
+// $a = new Config();
+// var_dump($a->getConnection());
+?>
 <head>
 <link rel="stylesheet" href="./src/css/bootstrap.min.css"  crossorigin="anonymous">
 <link rel="stylesheet" href="./src/css/all.min.css">
@@ -29,7 +48,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" name="name" class="form-control" autocomplete="off" required/>
+                      <input type="text" id="form3Example1c" name="username" class="form-control" autocomplete="off" required/>
                       <label class="form-label" for="form3Example1c">Your Name</label>
                       <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 71.2px;"></div><div class="form-notch-trailing"></div></div>
                     </div>
@@ -47,7 +66,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" autocomplete="off" />
+                      <input type="password" id="form3Example4c" class="form-control" name="signup-password" autocomplete="off" />
                       <label class="form-label" for="form3Example4c">Password</label>
                       <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 71.2px;"></div><div class="form-notch-trailing"></div></div>
                     </div>
@@ -56,7 +75,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
+                      <input type="password" id="form3Example4cd" name="confirm-password"  class="form-control" />
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
                       <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 71.2px;"></div><div class="form-notch-trailing"></div></div>
                     </div>
@@ -70,16 +89,16 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <input type="submit" class="btn btn-primary btn-lg" name="but-submit" value="Register" />
                   </div>
 
                 </form>
 
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                  class="img-fluid" alt="Sample image">
+                <img class="img-fluid" alt="Sample image" src="https://via.placeholder.com/1621x912.png" />
+                <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image"> -->
 
               </div>
             </div>
