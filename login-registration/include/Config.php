@@ -82,7 +82,7 @@ Class Config {
     {
         $stmt = $this->conn->prepare($query);
         $this->bindQueryParams($stmt, $paramType, $paramArray);
-
+        
         $stmt->execute();
         $insertId = $stmt->insert_id;
         return $insertId;
@@ -116,10 +116,11 @@ Class Config {
      */
     public function bindQueryParams($stmt, $paramType, $paramArray = array())
     {
-        $paramValueReference[] = & $paramType;
+        $paramValueReference[] = & $paramType;  //refreenceing the value, $paramValueReference reference the value from $paramType 
         for ($i = 0; $i < count($paramArray); $i ++) {
             $paramValueReference[] = & $paramArray[$i];
         }
+        //call_user_func_array — Call a callback with an array of parameters
         call_user_func_array(array(
             $stmt,
             'bind_param'

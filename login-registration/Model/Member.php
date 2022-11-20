@@ -86,12 +86,14 @@ class Member
                 "message" => "Email already exists."
             );
         } else {
+            
             if (! empty($_POST["signup-password"])) {
 
                 // PHP's password_hash is the best choice to use to store passwords
                 // do not attempt to do your own encryption, it is not safe
                 $hashedPassword = password_hash($_POST["signup-password"], PASSWORD_DEFAULT);
             }
+            
             $query = 'INSERT INTO tbl_member (username, password, email) VALUES (?, ?, ?)';
             $paramType = 'sss';
             $paramValue = array(
@@ -100,6 +102,9 @@ class Member
                 $_POST["email"]
             );
             $memberId = $this->ds->insert($query, $paramType, $paramValue);
+            var_dump($memberId);
+            var_dump($_POST);
+            die;
             if (! empty($memberId)) {
                 $response = array(
                     "status" => "success",
